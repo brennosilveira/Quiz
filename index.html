@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Quiz de JavaScript</title>
+
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Quiz de JavaScript</h1>
+  <div class="question" id="question">Pergunta aqui</div>
+  <div class="options">
+    <button onclick="checkAnswer('A')" id="optionA">Opção A</button>
+    <button onclick="checkAnswer('B')" id="optionB">Opção B</button>
+    <button onclick="checkAnswer('C')" id="optionC">Opção C</button>
+    <button onclick="checkAnswer('D')" id="optionD">Opção D</button>
+  </div>
+  <div class="score" id="score"></div>
+</div>
+
+<script>
+  const perguntas = [
+  {
+    pergunta: "Qual o método JavaScript que pode ser usado para adicionar um elemento ao final de um array?",
+    opcoes: { A: "push()", B: "pop()", C: "shift()", D: "unshift()" },
+    resposta: "A"
+  },
+  {
+    pergunta: "Qual o valor retornado pela expressão 'typeof null' em JavaScript?",
+    opcoes: {
+      A: "object",
+      B: "null",
+      C: "undefined",
+      D: "boolean"
+    },
+    resposta: "A"
+  },
+  {
+    pergunta: "O que o método 'addEventListener' faz em JavaScript?",
+    opcoes: { 
+      A: "Cria um novo evento",
+      B: "Adiciona um ouvinte para um evento em um elemento",
+      C: "Remove um evento de um elemento",
+      D: "Define o estilo de um elemento"
+    },
+    resposta: "B"
+  },
+  {
+    pergunta: "Qual a saída de console.log([] + []);?",
+    opcoes: { 
+      A: "undefined",
+      B: "0",
+      C: "string vazia",
+      D: "NaN"
+    },
+    resposta: "C"
+  },
+  {
+    pergunta: "Qual é a maneira correta de declarar uma constante em JavaScript?",
+    opcoes: { 
+      A: "let CONST = 10;",
+      B: "const value = 10;",
+      C: "constant value = 10;",
+      D: "var constant = 10;"
+    },
+    resposta: "B"
+  }
+];
+
+let perguntaAtual = 0;
+let pontuacao = 0;
+
+// Função para carregar uma pergunta
+function carregarPergunta() {
+  if (perguntaAtual < perguntas.length) {
+    const questao = perguntas[perguntaAtual];
+    document.getElementById("question").textContent = questao.pergunta;
+    document.getElementById("optionA").textContent = `A) ${questao.opcoes.A}`;
+    document.getElementById("optionB").textContent = `B) ${questao.opcoes.B}`;
+    document.getElementById("optionC").textContent = `C) ${questao.opcoes.C}`;
+    document.getElementById("optionD").textContent = `D) ${questao.opcoes.D}`;
+  } else {
+    document.querySelector(".quiz-container").innerHTML = `<h1>Quiz finalizado!</h1><div class="score">Sua pontuação: ${pontuacao} de ${perguntas.length}</div>`;
+  }
+}
+
+// Função para verificar a resposta
+function checkAnswer(resposta) {
+  if (resposta === perguntas[perguntaAtual].resposta) {
+    pontuacao++;
+    alert("Correto!");
+  } else {
+    alert("Incorreto!");
+  }
+  perguntaAtual++;
+  carregarPergunta();
+}
+
+// Carregar a primeira pergunta
+carregarPergunta();
+
+</script>
+
+</body>
+</html>

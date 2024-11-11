@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+.quiz-container {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.5), inset 0px 0px 15px rgba(0, 255, 255, 0.3);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+h1 {
+  font-size: 28px;
+  color: #00e5ff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 10px #00e5ff;
+  letter-spacing: 2px;
+}
+
+.question {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.options button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.15);
+  color: #00e5ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0px 0px 5px #00e5ff;
+}
+
+.options button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-50%) translateY(-50%) scale(0);
+  transition: transform 0.3s;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.options button:hover {
+  background: rgba(0, 229, 255, 0.25);
+  color: #fff;
+}
+
+.options button:hover:before {
+  transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.score {
+  font-size: 20px;
+  margin-top: 30px;
+  color: #00e5ff;
+  text-shadow: 0px 0px 8px #00e5ff;
+  animation: fadeIn 1s ease-out;
+}
+
+.quiz-container h1, .quiz-container .score {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-container:before,
+.quiz-container:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 15px;
+  z-index: -1;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
+  animation: animateBorder 5s linear infinite;
+}
+
+@keyframes animateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
